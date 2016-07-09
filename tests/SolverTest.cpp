@@ -31,25 +31,31 @@ TEST(Solver, Basics)
 
 TEST(Solver, UpdateConstants)
 {
-    Constant constant("x");
-    constant.setValue(6.28);
+    Constant c1("c1");
+    Constant c2("c2");
+    c1.setValue(6.28);
+    c2.setValue(0.5);
     
-    Variable leftSide("v");
-    SimpleTerm rightSide(constant, OP_MULTIPLY, -0.5);
-    Expression expression(leftSide, rightSide);
+    Variable v1("v1");
+    
+    Expression expression(-v1, SimpleTerm(c1, OP_MULTIPLY, c2));
     Constraint constraint(expression, Constraint::RelationalOperator::OP_EQ);
     
     Solver solver;
     
     solver.addConstraint(constraint);
     solver.updateVariables();
-    EXPECT_EQ(leftSide.value(), 3.14);
+    EXPECT_EQ(v1.value(), 3.14);
     
-    constant.setValue(50.0);
+    c1.setValue(50.0);
     solver.reevaluateConstants();
-    
     solver.updateVariables();
-    EXPECT_EQ(leftSide.value(), 25);
+    EXPECT_EQ(v1.value(), 25);
+    
+    c2.setValue(1.0);
+    solver.reevaluateConstants();
+    solver.updateVariables();
+    EXPECT_EQ(v1.value(), 50.0);
 }
 
 
