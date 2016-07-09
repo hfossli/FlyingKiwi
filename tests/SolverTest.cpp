@@ -3,8 +3,8 @@
 
 using namespace FlyingKiwi;
 
-TEST(Solver, Basics) {
-    
+TEST(Solver, Basics)
+{
     Constant constant("x");
     constant.setValue(6.28);
     
@@ -28,3 +28,30 @@ TEST(Solver, Basics) {
     solver.removeConstraint(constraint);
     EXPECT_TRUE(!solver.hasConstraint(constraint));
 }
+
+TEST(Solver, UpdateConstants)
+{
+    Constant constant("x");
+    constant.setValue(6.28);
+    
+    Variable leftSide("v");
+    SimpleTerm rightSide(constant, OP_MULTIPLY, -0.5);
+    Expression expression(leftSide, rightSide);
+    Constraint constraint(expression, Constraint::RelationalOperator::OP_EQ);
+    
+    Solver solver;
+    
+    solver.addConstraint(constraint);
+    solver.updateVariables();
+    EXPECT_EQ(leftSide.value(), 3.14);
+    
+    constant.setValue(50.0);
+    solver.reevaluateConstants();
+    
+    solver.updateVariables();
+    EXPECT_EQ(leftSide.value(), 25);
+}
+
+
+
+

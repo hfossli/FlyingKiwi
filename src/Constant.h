@@ -27,7 +27,7 @@ public:
         m_data( new ConstantData( name ) ) {}
 
 	Constant( double value ) :
-		m_data( new ConstantData( value) ) {}
+		m_data( new ConstantData( value ) ) {}
 
 	~Constant() {}
     

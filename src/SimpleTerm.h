@@ -72,6 +72,12 @@ public:
         return m_operator;
     }
     
+    const void editableConstantsInvolved( std::vector<Constant>& constants ) const
+    {
+        m_left->editableConstantsInvolved( constants );
+        m_right->editableConstantsInvolved( constants );
+    }
+    
     const double value() const
     {
         double left = leftIsLeaf() ? leftLeaf().value() : (*leftTree()).value();
@@ -92,6 +98,11 @@ public:
                 exit(-1);
                 return 0.0;
         }
+    }
+    
+    const bool contains( const Constant& constant ) const
+    {
+        return m_left->contains( constant ) || m_right->contains( constant );
     }
     
     // operator== is used for symbolics
@@ -129,6 +140,37 @@ private:
         const bool isLeaf() const
         {
             return m_tree == NULL;
+        }
+        
+        const void editableConstantsInvolved( std::vector<Constant>& constants ) const
+        {
+            if( isLeaf() )
+            {
+                if( m_leaf.editable() )
+                {
+                    constants.push_back(m_leaf);
+                }
+            }
+            else
+            {
+                m_tree->editableConstantsInvolved(constants);
+            }
+        }
+        
+        const bool contains( const Constant& constant ) const
+        {
+            if( isLeaf() )
+            {
+                if( m_leaf == constant )
+                {
+                    return true;
+                }
+                return false;
+            }
+            else
+            {
+                return m_tree->contains( constant );
+            }
         }
         
         Constant m_leaf;

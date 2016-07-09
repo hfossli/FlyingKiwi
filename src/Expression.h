@@ -44,6 +44,24 @@ public:
 	{
 		return m_constant;
 	}
+    
+    const bool contains( const Constant& constant ) const
+    {
+        if( m_constant.contains( constant ) )
+        {
+            return true;
+        }
+        
+        for( auto const &term : m_terms )
+        {
+            if( term.coefficient().contains( constant ) )
+            {
+                return true;
+            }
+        }
+        
+        return false;
+    }
 
 private:
 

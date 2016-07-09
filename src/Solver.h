@@ -61,9 +61,12 @@ namespace FlyingKiwi
             return m_impl.hasConstraint( constraint );
         }
         
-        void setConstantValue( const Constant& constant, double value )
+        /* Reevaluate will look for changes in constants and update constraints relying on them.
+         
+         */
+        void reevaluateConstants()
         {
-            m_impl.setConstantValue( constant, value );
+            m_impl.reevaluateConstants();
         }
         
         /* Update the values of the external solver variables.

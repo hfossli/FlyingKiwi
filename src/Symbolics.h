@@ -122,24 +122,14 @@ SimpleTerm operator-( const SimpleTerm& term )
 }
     
     
-// Variable multiply, divide, and unary invert
-
-inline
-Term operator*( const Variable& variable, const SimpleTerm& coefficient )
-{
-	return Term( variable, coefficient );
-}
-
-inline
-Term operator/( const Variable& variable, const SimpleTerm& denominator )
-{
-    return variable * SimpleTerm( Constant( 1.0 ) / denominator );
-}
+// Variable unary invert
 
 inline
 Term operator-( const Variable& variable )
 {
-	return variable * -1.0;
+    // TODO: Should be possible to write
+    // return variable * -1.0;
+	return Term(variable, -1.0);
 }
 
 
