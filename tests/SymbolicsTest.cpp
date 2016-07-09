@@ -30,7 +30,7 @@ TEST(Symbolics, SimpleTerm)
 TEST(Symbolics, Term)
 {
     Constant tau(6.28);
-    SimpleTerm pi(tau, OP_DIVIDE, 2.0);
+    SimpleTerm pi(tau, SimpleTerm::OP_DIVIDE, 2.0);
     Variable v("foo");
     Term term(v * pi);
 }

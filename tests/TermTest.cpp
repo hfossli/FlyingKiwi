@@ -14,7 +14,7 @@ TEST(Term, Basics) {
     y.setValue(20);
     
     SimpleTerm leaf(x);
-    SimpleTerm tree(leaf, OP_MULTIPLY, y);
+    SimpleTerm tree(leaf, SimpleTerm::OP_MULTIPLY, y);
     
     Term term(v, tree);
     EXPECT_TRUE(term.coefficient().equals(tree));

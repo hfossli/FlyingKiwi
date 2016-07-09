@@ -12,12 +12,13 @@
 
 namespace FlyingKiwi
 {
-    enum RelationalOperator { OP_MULTIPLY, OP_ADD, OP_DIVIDE, OP_SUBTRACT };
     
 class SimpleTerm
 {
     
 public:
+    
+    enum RelationalOperator { OP_MULTIPLY, OP_ADD, OP_DIVIDE, OP_SUBTRACT };
     
     SimpleTerm() :
         m_left( new SimpleTermData() ) {}

@@ -6,7 +6,7 @@ using namespace FlyingKiwi;
 TEST(Expression, Basics) {
 
     Variable v("v");
-    SimpleTerm tree(10, OP_MULTIPLY, 20);
+    SimpleTerm tree(10, SimpleTerm::OP_MULTIPLY, 20);
     Term term(v, tree);
     
     Expression expression(term, SimpleTerm( Constant ( 2.0 ) ) );

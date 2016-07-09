@@ -13,7 +13,7 @@ TEST(SimpleTerm, Basics)
     
     SimpleTerm left(x);
     SimpleTerm right(y);
-    SimpleTerm term(x, OP_MULTIPLY, y);
+    SimpleTerm term(x, SimpleTerm::OP_MULTIPLY, y);
     
     EXPECT_TRUE(left.leftIsLeaf() && left.rightIsLeaf());
     EXPECT_TRUE(right.leftIsLeaf() && right.rightIsLeaf());
@@ -23,7 +23,7 @@ TEST(SimpleTerm, Basics)
 TEST(SimpleTerm, Implicit)
 {
     Constant x("x");
-    SimpleTerm term(x, OP_MULTIPLY, SimpleTerm(100, OP_SUBTRACT, 95));
+    SimpleTerm term(x, SimpleTerm::OP_MULTIPLY, SimpleTerm(100, SimpleTerm::OP_SUBTRACT, 95));
     
     x.setValue(10);
     

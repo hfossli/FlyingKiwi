@@ -23,31 +23,31 @@ namespace FlyingKiwi
 //inline
 //SimpleTerm operator*( const Constant& constant, const Constant& constant2 )
 //{
-//    return SimpleTerm( constant, OP_MULTIPLY, constant2 );
+//    return SimpleTerm( constant, SimpleTerm::OP_MULTIPLY, constant2 );
 //}
 //
 //inline
 //SimpleTerm operator/( const Constant& constant, const Constant& constant2 )
 //{
-//    return SimpleTerm( constant, OP_DIVIDE, constant2 );
+//    return SimpleTerm( constant, SimpleTerm::OP_DIVIDE, constant2 );
 //}
 //
 //inline
 //SimpleTerm operator-( const Constant& constant, const Constant& constant2 )
 //{
-//    return SimpleTerm( constant, OP_SUBTRACT, constant2 );
+//    return SimpleTerm( constant, SimpleTerm::OP_SUBTRACT, constant2 );
 //}
 //
 //inline
 //SimpleTerm operator+( const Constant& constant, const Constant& constant2 )
 //{
-//    return SimpleTerm( constant, OP_ADD, constant2 );
+//    return SimpleTerm( constant, SimpleTerm::OP_ADD, constant2 );
 //}
 //
 inline
 SimpleTerm operator-( const Constant& constant )
 {
-    return SimpleTerm( constant, OP_MULTIPLY, -1.0 );
+    return SimpleTerm( constant, SimpleTerm::OP_MULTIPLY, -1.0 );
 }
     
  
@@ -56,37 +56,37 @@ SimpleTerm operator-( const Constant& constant )
 //inline
 //SimpleTerm operator*( const SimpleTerm& term, const Constant& constant )
 //{
-//    return SimpleTerm( term, OP_MULTIPLY, constant );
+//    return SimpleTerm( term, SimpleTerm::OP_MULTIPLY, constant );
 //}
 //
 //inline
 //SimpleTerm operator*( const Constant& constant, const SimpleTerm& term )
 //{
-//    return SimpleTerm( term, OP_MULTIPLY, constant );
+//    return SimpleTerm( term, SimpleTerm::OP_MULTIPLY, constant );
 //}
 //
 //inline
 //SimpleTerm operator/( const SimpleTerm& term, const Constant& constant )
 //{
-//    return SimpleTerm( term, OP_DIVIDE, constant );
+//    return SimpleTerm( term, SimpleTerm::OP_DIVIDE, constant );
 //}
 //
 //inline
 //SimpleTerm operator/( const Constant& constant, const SimpleTerm& term )
 //{
-//    return SimpleTerm( constant, OP_DIVIDE, term );
+//    return SimpleTerm( constant, SimpleTerm::OP_DIVIDE, term );
 //}
 //
 //inline
 //SimpleTerm operator-( const SimpleTerm& constant, const Constant& term )
 //{
-//    return SimpleTerm( term, OP_SUBTRACT, constant );
+//    return SimpleTerm( term, SimpleTerm::OP_SUBTRACT, constant );
 //}
 //
 //inline
 //SimpleTerm operator+( const SimpleTerm& constant, const Constant& constant2 )
 //{
-//    return SimpleTerm( constant, OP_ADD, constant2 );
+//    return SimpleTerm( constant, SimpleTerm::OP_ADD, constant2 );
 //}
 
 // SimpleTerm multiply, divide and unary invert
@@ -94,31 +94,31 @@ SimpleTerm operator-( const Constant& constant )
 inline
 SimpleTerm operator*( const SimpleTerm& left, const SimpleTerm& right )
 {
-    return SimpleTerm( left, OP_MULTIPLY, right );
+    return SimpleTerm( left, SimpleTerm::OP_MULTIPLY, right );
 }
     
 inline
 SimpleTerm operator/( const SimpleTerm& left, const SimpleTerm& right )
 {
-    return SimpleTerm( left, OP_DIVIDE, right );
+    return SimpleTerm( left, SimpleTerm::OP_DIVIDE, right );
 }
     
 inline
 SimpleTerm operator-( const SimpleTerm& left, const SimpleTerm& right )
 {
-    return SimpleTerm( left, OP_SUBTRACT, right );
+    return SimpleTerm( left, SimpleTerm::OP_SUBTRACT, right );
 }
     
 inline
 SimpleTerm operator+( const SimpleTerm& left, const SimpleTerm& right )
 {
-    return SimpleTerm( left, OP_ADD, right );
+    return SimpleTerm( left, SimpleTerm::OP_ADD, right );
 }
     
 inline
 SimpleTerm operator-( const SimpleTerm& term )
 {
-    return SimpleTerm( term, OP_MULTIPLY, -1.0 );
+    return SimpleTerm( term, SimpleTerm::OP_MULTIPLY, -1.0 );
 }
     
     
