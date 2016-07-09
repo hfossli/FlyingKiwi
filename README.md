@@ -5,7 +5,7 @@ A wrapper around [Kiwi](https://github.com/nucleic/kiwi), the efficient cassowar
 
 ## Architecture
 
-This is a wrapper around Kiwi. The Kiwi solver and internals is not visible though the FlyingKiwi namespace. 
+This is a wrapper around Kiwi with as similar API as possible. It should really be a drop in replacement. The Kiwi solver and internals is not visible though the FlyingKiwi namespace. 
 
 ## Features
 
