@@ -9,7 +9,7 @@ TEST(Solver, Basics) {
     constant.setValue(6.28);
     
     Variable leftSide("v");
-    SimpleTerm rightSide(constant, SimpleTerm::RelationalOperator::multiply, -0.5);
+    SimpleTerm rightSide(constant, OP_MULTIPLY, -0.5);
     Expression expression(leftSide, rightSide);
     Constraint constraint(expression, Constraint::RelationalOperator::OP_EQ);
     

@@ -25,9 +25,6 @@ namespace FlyingKiwi
         Variable( const char* name ) :
             m_data( new VariableData( name ) ) {}
         
-        Variable( double value ) :
-            m_data( new VariableData( value) ) {}
-        
         ~Variable() {}
         
         const std::string& name() const

@@ -12,3 +12,4 @@
 #include "Term.h"
 #include "Variable.h"
 #include "Solver.h"
+#include "Symbolics.h"

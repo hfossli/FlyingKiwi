@@ -10,22 +10,25 @@
 		4C1B01E11D30D99900C79039 /* ConstantTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B01DB1D30D99600C79039 /* ConstantTest.cpp */; };
 		4C1B01E21D30D99900C79039 /* ConstraintTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B01DC1D30D99600C79039 /* ConstraintTest.cpp */; };
 		4C1B01E31D30D99900C79039 /* ExpressionTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B01DD1D30D99600C79039 /* ExpressionTest.cpp */; };
-		4C1B01E41D30D99900C79039 /* SimpleTermTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B01DE1D30D99600C79039 /* SimpleTermTest.cpp */; };
 		4C1B01E51D30D99900C79039 /* SolverTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B01DF1D30D99600C79039 /* SolverTest.cpp */; };
 		4C1B01E61D30D99900C79039 /* TermTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B01E01D30D99600C79039 /* TermTest.cpp */; };
 		4C1B01E71D30D99900C79039 /* ConstantTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B01DB1D30D99600C79039 /* ConstantTest.cpp */; };
 		4C1B01E81D30D99900C79039 /* ConstraintTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B01DC1D30D99600C79039 /* ConstraintTest.cpp */; };
 		4C1B01E91D30D99900C79039 /* ExpressionTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B01DD1D30D99600C79039 /* ExpressionTest.cpp */; };
-		4C1B01EA1D30D99900C79039 /* SimpleTermTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B01DE1D30D99600C79039 /* SimpleTermTest.cpp */; };
 		4C1B01EB1D30D99900C79039 /* SolverTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B01DF1D30D99600C79039 /* SolverTest.cpp */; };
 		4C1B01EC1D30D99900C79039 /* TermTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B01E01D30D99600C79039 /* TermTest.cpp */; };
 		4C1B01ED1D30D99A00C79039 /* ConstantTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B01DB1D30D99600C79039 /* ConstantTest.cpp */; };
 		4C1B01EE1D30D99A00C79039 /* ConstraintTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B01DC1D30D99600C79039 /* ConstraintTest.cpp */; };
 		4C1B01EF1D30D99A00C79039 /* ExpressionTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B01DD1D30D99600C79039 /* ExpressionTest.cpp */; };
-		4C1B01F01D30D99A00C79039 /* SimpleTermTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B01DE1D30D99600C79039 /* SimpleTermTest.cpp */; };
 		4C1B01F11D30D99A00C79039 /* SolverTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B01DF1D30D99600C79039 /* SolverTest.cpp */; };
 		4C1B01F21D30D99A00C79039 /* TermTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B01E01D30D99600C79039 /* TermTest.cpp */; };
 		4C1B01F41D30DA4400C79039 /* Symbolics.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1B01F31D30DA4400C79039 /* Symbolics.h */; };
+		4C1B01FB1D3105B400C79039 /* SimpleTermTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B01DE1D30D99600C79039 /* SimpleTermTest.cpp */; };
+		4C1B01FC1D3105B400C79039 /* SimpleTermTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B01DE1D30D99600C79039 /* SimpleTermTest.cpp */; };
+		4C1B01FD1D3105B400C79039 /* SimpleTermTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B01DE1D30D99600C79039 /* SimpleTermTest.cpp */; };
+		4C1B01FE1D3108BD00C79039 /* SymbolicsTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B01F51D30E5DC00C79039 /* SymbolicsTest.cpp */; };
+		4C1B01FF1D3108BD00C79039 /* SymbolicsTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B01F51D30E5DC00C79039 /* SymbolicsTest.cpp */; };
+		4C1B02001D3108BD00C79039 /* SymbolicsTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B01F51D30E5DC00C79039 /* SymbolicsTest.cpp */; };
 		C9959FB1188F91F50031BFA5 /* ExampleObjCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C9959FB0188F91F50031BFA5 /* ExampleObjCTest.m */; };
 		C9959FB2188F91F50031BFA5 /* ExampleObjCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C9959FB0188F91F50031BFA5 /* ExampleObjCTest.m */; };
 		C9BB83E617E1FEE0008820CF /* libdemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9BB83D617E1FDFD008820CF /* libdemo.a */; };
@@ -165,6 +168,7 @@
 		4C1B01DF1D30D99600C79039 /* SolverTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SolverTest.cpp; sourceTree = "<group>"; };
 		4C1B01E01D30D99600C79039 /* TermTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TermTest.cpp; sourceTree = "<group>"; };
 		4C1B01F31D30DA4400C79039 /* Symbolics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Symbolics.h; sourceTree = "<group>"; };
+		4C1B01F51D30E5DC00C79039 /* SymbolicsTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SymbolicsTest.cpp; sourceTree = "<group>"; };
 		C9959FB0188F91F50031BFA5 /* ExampleObjCTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleObjCTest.m; sourceTree = "<group>"; };
 		C9BB83D617E1FDFD008820CF /* libdemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libdemo.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9C671B117E0312F00ED64D4 /* standalone */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = standalone; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -317,6 +321,7 @@
 				4C1B01DE1D30D99600C79039 /* SimpleTermTest.cpp */,
 				4C1B01DF1D30D99600C79039 /* SolverTest.cpp */,
 				4C1B01E01D30D99600C79039 /* TermTest.cpp */,
+				4C1B01F51D30E5DC00C79039 /* SymbolicsTest.cpp */,
 			);
 			name = tests;
 			path = ../tests;
@@ -664,8 +669,9 @@
 				C9E7389717E205E30077AEC5 /* CounterTest.cpp in Sources */,
 				4C1B01ED1D30D99A00C79039 /* ConstantTest.cpp in Sources */,
 				C9C671B517E0312F00ED64D4 /* main.cpp in Sources */,
+				4C1B01FE1D3108BD00C79039 /* SymbolicsTest.cpp in Sources */,
+				4C1B01FB1D3105B400C79039 /* SimpleTermTest.cpp in Sources */,
 				4C1B01F21D30D99A00C79039 /* TermTest.cpp in Sources */,
-				4C1B01F01D30D99A00C79039 /* SimpleTermTest.cpp in Sources */,
 				4C1B01F11D30D99A00C79039 /* SolverTest.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -683,8 +689,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9E7389817E205E30077AEC5 /* CounterTest.cpp in Sources */,
-				4C1B01E41D30D99900C79039 /* SimpleTermTest.cpp in Sources */,
 				4C1B01E51D30D99900C79039 /* SolverTest.cpp in Sources */,
+				4C1B01FD1D3105B400C79039 /* SimpleTermTest.cpp in Sources */,
+				4C1B02001D3108BD00C79039 /* SymbolicsTest.cpp in Sources */,
 				C9959FB1188F91F50031BFA5 /* ExampleObjCTest.m in Sources */,
 				C9C6722017E1876200ED64D4 /* GoogleTests.mm in Sources */,
 				4C1B01E61D30D99900C79039 /* TermTest.cpp in Sources */,
@@ -715,8 +722,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9F82173188CF86D00DC1008 /* CounterTest.cpp in Sources */,
-				4C1B01EA1D30D99900C79039 /* SimpleTermTest.cpp in Sources */,
 				4C1B01EB1D30D99900C79039 /* SolverTest.cpp in Sources */,
+				4C1B01FC1D3105B400C79039 /* SimpleTermTest.cpp in Sources */,
+				4C1B01FF1D3108BD00C79039 /* SymbolicsTest.cpp in Sources */,
 				C9959FB2188F91F50031BFA5 /* ExampleObjCTest.m in Sources */,
 				C9F82171188CF86300DC1008 /* GoogleTests.mm in Sources */,
 				4C1B01EC1D30D99900C79039 /* TermTest.cpp in Sources */,

@@ -55,16 +55,6 @@ namespace FlyingKiwi
                 m_solver.addConstraint( c );
             }
             
-            const double doubleForSimpleTerm( const SimpleTerm& term )
-            {
-                if(term.isLeaf())
-                {
-                    return term.leaf().value();
-                }
-                SimpleTerm tree(*term.tree());
-                return doubleForSimpleTerm(tree) * term.leaf().value();
-            }
-            
             kiwi::Variable variableFromVariable( const Variable& variable )
             {
                 VariableMap::iterator it = m_variableMap.find( variable );
@@ -79,7 +69,7 @@ namespace FlyingKiwi
             
             kiwi::Term termFromTerm( const Term& term )
             {
-                double coefficient = doubleForSimpleTerm(term.coefficient());
+                double coefficient = term.coefficient().value();
                 kiwi::Variable var( variableFromVariable( term.variable() ) );
                 return kiwi::Term(var, coefficient);
             }
@@ -92,7 +82,7 @@ namespace FlyingKiwi
                 {
                     terms.push_back( termFromTerm( x ) );
                 }
-                double constant = doubleForSimpleTerm( expr.constant() );
+                double constant = expr.constant().value();
                 return kiwi::Expression( terms, constant );
             }
             
@@ -138,7 +128,7 @@ namespace FlyingKiwi
                 else
                 {
                     // TODO: Catch and throw exception
-                    std::cerr << "Error: Can not change value of a plain double container\n";
+                    std::cerr << "Error: Can not remove a constraint never added\n";
                     exit(-1);
                 }
             }
