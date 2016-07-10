@@ -139,13 +139,13 @@ private:
 	public:
         
         SimpleTermData() :
-            m_tree( nullptr ), m_leaf( 0.0 ) {}
+            m_tree( NULL ), m_leaf( 0.0 ) {}
         
         SimpleTermData( double leaf ) :
-            m_tree( nullptr ), m_leaf( leaf ) {}
+            m_tree( NULL ), m_leaf( leaf ) {}
         
         SimpleTermData( const Constant& leaf ) :
-            m_tree( nullptr ), m_leaf( leaf ) {}
+            m_tree( NULL ), m_leaf( leaf ) {}
         
         SimpleTermData( const SimpleTerm& tree ) :
             m_tree( new SimpleTerm( tree ) ), m_leaf( 0.0 ) {}
