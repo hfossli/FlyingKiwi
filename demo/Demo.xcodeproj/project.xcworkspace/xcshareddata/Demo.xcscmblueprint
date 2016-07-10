@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "AABC69AF198BBB41E297F90D420E6DF50A2456EC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "73F59FCECCD6F4E64B0ABDE4FF698A2CC0A023A5" : 0,
+    "AABC69AF198BBB41E297F90D420E6DF50A2456EC" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "B26C2AFB-5A1B-4140-AD91-C0ED4D2F1850",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "73F59FCECCD6F4E64B0ABDE4FF698A2CC0A023A5" : "flying-kiwi\/kiwi\/",
+    "AABC69AF198BBB41E297F90D420E6DF50A2456EC" : "flying-kiwi\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Demo",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "demo\/Demo.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:hfossli\/kiwi.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "73F59FCECCD6F4E64B0ABDE4FF698A2CC0A023A5"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:hfossli\/FlyingKiwi.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "AABC69AF198BBB41E297F90D420E6DF50A2456EC"
+    }
+  ]
+}
