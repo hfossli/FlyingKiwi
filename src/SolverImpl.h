@@ -26,6 +26,7 @@
 #include "Constraint.h"
 #include "Variable.h"
 #include "Constant.h"
+#include "Errors.h"
 #include "../kiwi/kiwi/maptype.h"
 #include "../kiwi/kiwi/AssocVector.h"
 #include "../kiwi/kiwi/kiwi.h"
@@ -46,7 +47,6 @@ namespace FlyingKiwi
             
         public:
             
-            // TODO: initialize everything
             SolverImpl() {}
             
             ~SolverImpl() {}
@@ -61,6 +61,9 @@ namespace FlyingKiwi
              UnsatisfiableConstraint
              The given constraint is required and cannot be satisfied.
              
+             InternalSolverError
+             The objective is unbounded – can not optimize.
+             
              */
             void addConstraint( const Constraint& constraint )
             {
@@ -69,9 +72,26 @@ namespace FlyingKiwi
                 std::vector<Constant> editable = editableConstantsInConstraint( constraint );
                 storeUnknownConstants( editable );
                 
-                kiwi::Constraint kiwiConstraint( constraintFromConstraint( constraint ) );
-                m_constraintMap[ constraint ] = kiwiConstraint;
-                m_solver.addConstraint( kiwiConstraint );
+                ConstraintMap::iterator tuple = m_constraintMap.find( constraint );
+                if(tuple != m_constraintMap.end())
+                {
+                    throw DuplicateConstraint( constraint );
+                }
+                else
+                {
+                    kiwi::Constraint kiwiConstraint( constraintFromConstraint( constraint ) );
+                    m_constraintMap[ constraint ] = kiwiConstraint;
+                    
+                    try {
+                        m_solver.addConstraint( kiwiConstraint );
+                    } catch ( kiwi::UnsatisfiableConstraint &exception ) {
+                        throw UnsatisfiableConstraint( constraint );
+                    } catch ( kiwi::DuplicateConstraint &exception ) {
+                        throw DuplicateConstraint( constraint );
+                    } catch ( std::exception &exception ) {
+                        throw InternalSolverError( exception.what() );
+                    }
+                }
             }
             
             /* Remove a constraint from the solver.
@@ -81,24 +101,29 @@ namespace FlyingKiwi
              UnknownConstraint
              The given constraint has not been added to the solver.
              
+             InternalSolverError
+             The objective is unbounded – can not optimize.
+             
              */
             void removeConstraint( const Constraint& constraint )
             {
                 reevaluateConstants();
                 
-                typedef ConstraintMap::iterator iter_t;
-                iter_t end = m_constraintMap.end();
-                iter_t tuple = m_constraintMap.find( constraint );
-                if(tuple != end)
+                ConstraintMap::iterator tuple = m_constraintMap.find( constraint );
+                if(tuple != m_constraintMap.end())
                 {
-                    m_solver.removeConstraint( tuple->second );
+                    try {
+                        m_solver.removeConstraint( tuple->second );
+                    } catch ( kiwi::UnknownConstraint &exception ) {
+                        throw UnknownConstraint( constraint );
+                    } catch ( std::exception &exception ) {
+                        throw InternalSolverError( exception.what() );
+                    }
                     m_constraintMap.erase( tuple );
                 }
                 else
                 {
-                    // TODO: Catch and throw exception
-                    std::cerr << "Error: Can not remove a constraint never added\n";
-                    exit(-1);
+                    throw UnknownConstraint( constraint );
                 }
             }
             
@@ -115,6 +140,11 @@ namespace FlyingKiwi
             }
             
             /* Reevaluate will look for changes in constants and update constraints relying on them.
+             
+             Throws
+             ------
+             InternalSolverError
+             The objective is unbounded – can not optimize.
              
              */
             void reevaluateConstants()
@@ -158,6 +188,9 @@ namespace FlyingKiwi
              */
             void reset()
             {
+                m_constraintMap.clear();
+                m_variableMap.clear();
+                m_constantValues.clear();
                 m_solver.reset();
             }
             
@@ -173,10 +206,14 @@ namespace FlyingKiwi
                     {
                         if( it->first.expression().contains( constant ) )
                         {
-                            m_solver.removeConstraint( it->second );
-                            kiwi::Constraint c = constraintFromConstraint( it->first );
-                            m_constraintMap[ it->first ] = c;
-                            m_solver.addConstraint( c );
+                            try {
+                                kiwi::Constraint c = constraintFromConstraint( it->first );
+                                m_solver.removeConstraint( it->second );
+                                m_constraintMap[ it->first ] = c;
+                                m_solver.addConstraint( c );
+                            } catch ( std::exception &exception ) {
+                                throw InternalSolverError( exception.what() );
+                            }
                         }
                     }
                 }

@@ -58,6 +58,17 @@ TEST(Solver, UpdateConstants)
     EXPECT_EQ(v1.value(), 50.0);
 }
 
-
-
+TEST(Solver, AddConstraint)
+{
+    Constant c1("c1");
+    Variable v1("v1");
+    c1.setValue(3.0);
+    
+    Expression expression(-v1, c1);
+    Constraint constraint(expression, Constraint::OP_EQ);
+    
+    Solver solver;
+    solver.addConstraint(constraint);
+    EXPECT_THROW(solver.addConstraint(constraint), DuplicateConstraint);
+}
 

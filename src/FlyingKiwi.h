@@ -23,6 +23,7 @@
 #pragma once
 #include "Constant.h"
 #include "Constraint.h"
+#include "Errors.h"
 #include "Expression.h"
 #include "Term.h"
 #include "Variable.h"

@@ -48,6 +48,9 @@ namespace FlyingKiwi
          UnsatisfiableConstraint
          The given constraint is required and cannot be satisfied.
          
+         InternalSolverError
+         The objective is unbounded – can not optimize.
+         
          */
         void addConstraint( const Constraint& constraint )
         {
@@ -60,6 +63,9 @@ namespace FlyingKiwi
          ------
          UnknownConstraint
          The given constraint has not been added to the solver.
+         
+         InternalSolverError
+         The objective is unbounded – can not optimize.
          
          */
         void removeConstraint( const Constraint& constraint )
@@ -76,6 +82,11 @@ namespace FlyingKiwi
         }
         
         /* Reevaluate will look for changes in constants and update constraints relying on them.
+         
+         Throws
+         ------
+         InternalSolverError
+         The objective is unbounded – can not optimize.
          
          */
         void reevaluateConstants()
