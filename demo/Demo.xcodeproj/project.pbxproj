@@ -39,19 +39,13 @@
 		C9C6720E17E1864900ED64D4 /* libgtest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C671C517E1820400ED64D4 /* libgtest.a */; };
 		C9C6722017E1876200ED64D4 /* GoogleTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = C9C6721D17E1876200ED64D4 /* GoogleTests.mm */; };
 		C9E7389117E1FF080077AEC5 /* libdemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9BB83D617E1FDFD008820CF /* libdemo.a */; };
-		C9E7389417E205450077AEC5 /* Counter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9E7389217E205450077AEC5 /* Counter.cpp */; };
-		C9E7389517E205450077AEC5 /* Counter.h in Headers */ = {isa = PBXBuildFile; fileRef = C9E7389317E205450077AEC5 /* Counter.h */; };
-		C9E7389717E205E30077AEC5 /* CounterTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9E7389617E205E30077AEC5 /* CounterTest.cpp */; };
-		C9E7389817E205E30077AEC5 /* CounterTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9E7389617E205E30077AEC5 /* CounterTest.cpp */; };
 		C9F82110188CF70600DC1008 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F8210F188CF70600DC1008 /* Foundation.framework */; };
 		C9F82133188CF76000DC1008 /* gtest-all.cc in Sources */ = {isa = PBXBuildFile; fileRef = C9C671EC17E1821F00ED64D4 /* gtest-all.cc */; };
 		C9F82139188CF7AB00DC1008 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F8210F188CF70600DC1008 /* Foundation.framework */; };
-		C9F8215A188CF7EC00DC1008 /* Counter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9E7389217E205450077AEC5 /* Counter.cpp */; };
 		C9F82160188CF81C00DC1008 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F8211D188CF70700DC1008 /* XCTest.framework */; };
 		C9F82161188CF81C00DC1008 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F8210F188CF70600DC1008 /* Foundation.framework */; };
 		C9F82162188CF81C00DC1008 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F82120188CF70700DC1008 /* UIKit.framework */; };
 		C9F82171188CF86300DC1008 /* GoogleTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = C9C6721D17E1876200ED64D4 /* GoogleTests.mm */; };
-		C9F82173188CF86D00DC1008 /* CounterTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9E7389617E205E30077AEC5 /* CounterTest.cpp */; };
 		C9F82174188CF8D300DC1008 /* libdemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F82138188CF7AB00DC1008 /* libdemo.a */; };
 		C9F82175188CF8D700DC1008 /* libgtest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F8210E188CF70600DC1008 /* libgtest.a */; };
 /* End PBXBuildFile section */
@@ -182,9 +176,6 @@
 		C9C671FA17E1854400ED64D4 /* TestBundle.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestBundle.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9C671FF17E1854400ED64D4 /* TestBundle-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TestBundle-Info.plist"; sourceTree = "<group>"; };
 		C9C6721D17E1876200ED64D4 /* GoogleTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GoogleTests.mm; sourceTree = "<group>"; };
-		C9E7389217E205450077AEC5 /* Counter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Counter.cpp; path = DemoLib/Counter.cpp; sourceTree = "<group>"; };
-		C9E7389317E205450077AEC5 /* Counter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Counter.h; path = DemoLib/Counter.h; sourceTree = "<group>"; };
-		C9E7389617E205E30077AEC5 /* CounterTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CounterTest.cpp; path = DemoLib/CounterTest.cpp; sourceTree = "<group>"; };
 		C9F8210E188CF70600DC1008 /* libgtest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libgtest.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9F8210F188CF70600DC1008 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9F8211D188CF70700DC1008 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -327,23 +318,12 @@
 			path = ../tests;
 			sourceTree = "<group>";
 		};
-		C9BB83DA17E1FE22008820CF /* Demo Library */ = {
-			isa = PBXGroup;
-			children = (
-				C9E7389217E205450077AEC5 /* Counter.cpp */,
-				C9E7389317E205450077AEC5 /* Counter.h */,
-				C9E7389617E205E30077AEC5 /* CounterTest.cpp */,
-			);
-			name = "Demo Library";
-			sourceTree = "<group>";
-		};
 		C9C671A817E0312F00ED64D4 = {
 			isa = PBXGroup;
 			children = (
 				4C1B01CE1D30D99600C79039 /* src */,
 				4C1B01DA1D30D99600C79039 /* tests */,
 				4C1B01A51D30D98100C79039 /* kiwi */,
-				C9BB83DA17E1FE22008820CF /* Demo Library */,
 				C9C671B317E0312F00ED64D4 /* Standalone Test Runner */,
 				C9C671FD17E1854400ED64D4 /* Test Bundle */,
 				C9C671C017E1811200ED64D4 /* Google Test */,
@@ -436,7 +416,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C1B01F41D30DA4400C79039 /* Symbolics.h in Headers */,
-				C9E7389517E205450077AEC5 /* Counter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,7 +635,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9E7389417E205450077AEC5 /* Counter.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -666,7 +644,6 @@
 			files = (
 				4C1B01EE1D30D99A00C79039 /* ConstraintTest.cpp in Sources */,
 				4C1B01EF1D30D99A00C79039 /* ExpressionTest.cpp in Sources */,
-				C9E7389717E205E30077AEC5 /* CounterTest.cpp in Sources */,
 				4C1B01ED1D30D99A00C79039 /* ConstantTest.cpp in Sources */,
 				C9C671B517E0312F00ED64D4 /* main.cpp in Sources */,
 				4C1B01FE1D3108BD00C79039 /* SymbolicsTest.cpp in Sources */,
@@ -688,7 +665,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9E7389817E205E30077AEC5 /* CounterTest.cpp in Sources */,
 				4C1B01E51D30D99900C79039 /* SolverTest.cpp in Sources */,
 				4C1B01FD1D3105B400C79039 /* SimpleTermTest.cpp in Sources */,
 				4C1B02001D3108BD00C79039 /* SymbolicsTest.cpp in Sources */,
@@ -713,7 +689,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9F8215A188CF7EC00DC1008 /* Counter.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -721,7 +696,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9F82173188CF86D00DC1008 /* CounterTest.cpp in Sources */,
 				4C1B01EB1D30D99900C79039 /* SolverTest.cpp in Sources */,
 				4C1B01FC1D3105B400C79039 /* SimpleTermTest.cpp in Sources */,
 				4C1B01FF1D3108BD00C79039 /* SymbolicsTest.cpp in Sources */,
