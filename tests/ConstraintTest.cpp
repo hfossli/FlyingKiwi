@@ -18,9 +18,9 @@ TEST(Constraint, Basics) {
     
     Term term(v, tree);
     
-    Expression expression(term, SimpleTerm( Constant ( 2.0 ) ) );
+    Expression expression(term, SimpleTerm( 2.0 ) );
     
-    Constraint constraint(term, Constraint::RelationalOperator::OP_EQ);
+    Constraint constraint(term, Constraint::OP_EQ);
     
     EXPECT_TRUE(constraint.expression().terms().size() == 1);
 }

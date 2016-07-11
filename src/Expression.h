@@ -34,13 +34,11 @@ class Expression
 
 public:
 
-	Expression( double constant = 0.0 ) : m_constant( constant ) {}
-
 	Expression( const Term& term ) :
-		m_terms( 1, term ), m_constant( 0.0 ) {}
+		m_terms( 1, term ), m_constant( Constant( 0.0, false ) ) {}
 
 	Expression( const std::vector<Term>& terms ) :
-		m_terms( terms ), m_constant( 0.0 ) {}
+		m_terms( terms ), m_constant( Constant( 0.0, false ) ) {}
 
 	Expression( const Term& term, const SimpleTerm& constant ) :
 		m_terms( 1, term ), m_constant( constant ) {}

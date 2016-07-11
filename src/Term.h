@@ -35,7 +35,7 @@ namespace FlyingKiwi
     public:
         
         Term( const Variable& variable ) :
-            m_variable( variable ), m_coefficient( 1.0 ) {}
+            m_variable( variable ), m_coefficient( Constant( 1.0, false ) ) {}
         
         Term( const Variable& variable, const SimpleTerm& coefficient ) :
             m_variable( variable ), m_coefficient( coefficient ) {}

@@ -11,7 +11,7 @@ TEST(Solver, Basics)
     Variable leftSide("v");
     SimpleTerm rightSide(constant, SimpleTerm::OP_MULTIPLY, -0.5);
     Expression expression(leftSide, rightSide);
-    Constraint constraint(expression, Constraint::RelationalOperator::OP_EQ);
+    Constraint constraint(expression, Constraint::OP_EQ);
     
     Solver solver;
     
@@ -60,9 +60,8 @@ TEST(Solver, UpdateConstants)
 
 TEST(Solver, AddConstraint)
 {
-    Constant c1("c1");
+    Constant c1("c1", 3.0);
     Variable v1("v1");
-    c1.setValue(3.0);
     
     Expression expression(-v1, c1);
     Constraint constraint(expression, Constraint::OP_EQ);

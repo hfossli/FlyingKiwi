@@ -35,13 +35,17 @@ public:
     enum RelationalOperator { OP_MULTIPLY, OP_ADD, OP_DIVIDE, OP_SUBTRACT };
     
     SimpleTerm() :
-        m_left( new SimpleTermData() ) {}
+        m_operator( OP_ADD ) {}
     
     SimpleTerm( double leaf ) :
-        m_left( new SimpleTermData( leaf ) ), m_right( new SimpleTermData( 1.0 ) ), m_operator(OP_MULTIPLY) {}
+        m_left( new SimpleTermData( Constant( leaf, false ) ) ),
+        m_operator(OP_MULTIPLY),
+        m_right( new SimpleTermData( Constant( 1.0, false ) ) ) {}
     
     SimpleTerm( const Constant& leaf ) :
-        m_left( new SimpleTermData( leaf ) ), m_right( new SimpleTermData( 1.0 ) ), m_operator(OP_MULTIPLY) {}
+        m_left( new SimpleTermData( leaf ) ),
+        m_operator(OP_MULTIPLY),
+        m_right( new SimpleTermData( Constant( 1.0, false ) ) ) {}
     
     SimpleTerm( const SimpleTerm& left, const RelationalOperator relationOperator, const SimpleTerm& right ) :
         m_left( new SimpleTermData( left ) ), m_right ( new SimpleTermData( right ) ), m_operator( relationOperator ) {}
@@ -139,16 +143,13 @@ private:
 	public:
         
         SimpleTermData() :
-            m_tree( NULL ), m_leaf( 0.0 ) {}
-        
-        SimpleTermData( double leaf ) :
-            m_tree( NULL ), m_leaf( leaf ) {}
+            m_tree( NULL ), m_leaf( 0.0, false ) {}
         
         SimpleTermData( const Constant& leaf ) :
             m_tree( NULL ), m_leaf( leaf ) {}
         
         SimpleTermData( const SimpleTerm& tree ) :
-            m_tree( new SimpleTerm( tree ) ), m_leaf( 0.0 ) {}
+            m_tree( new SimpleTerm( tree ) ), m_leaf( 0.0, false ) {}
 
 		~SimpleTermData() {}
         

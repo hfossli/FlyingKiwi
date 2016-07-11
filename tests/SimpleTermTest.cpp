@@ -23,7 +23,7 @@ TEST(SimpleTerm, Basics)
 TEST(SimpleTerm, Implicit)
 {
     Constant x("x");
-    SimpleTerm term(x, SimpleTerm::OP_MULTIPLY, SimpleTerm(100, SimpleTerm::OP_SUBTRACT, 95));
+    SimpleTerm term(x, SimpleTerm::OP_MULTIPLY, SimpleTerm(Constant( 100, false ), SimpleTerm::OP_SUBTRACT, Constant( 95, false )));
     
     x.setValue(10);
     

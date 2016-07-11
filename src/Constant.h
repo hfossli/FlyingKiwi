@@ -28,20 +28,43 @@
 
 namespace FlyingKiwi
 {
+ 
+class ConstantEditError : public std::exception
+{
+    
+public:
+    
+    ConstantEditError() : m_msg( "An internal solver error ocurred." ) {}
+    
+    ConstantEditError( const char* msg ) : m_msg( msg ) {}
+    
+    ConstantEditError( const std::string& msg ) : m_msg( msg ) {}
+    
+    ~ConstantEditError() throw() {}
+    
+    const char* what() const throw()
+    {
+        return m_msg.c_str();
+    }
+    
+private:
+    
+    std::string m_msg;
+};
     
 class Constant
 {
         
 public:
 
-	Constant( const std::string& name ) :
-        m_data( new ConstantData( name ) ) {}
+	Constant( const std::string& name, double value = 0.0, bool editable = true ) :
+        m_data( new ConstantData( name, value, editable ) ) {}
     
-    Constant( const char* name ) :
-        m_data( new ConstantData( name ) ) {}
+    Constant( const char* name, double value = 0.0, bool editable = true ) :
+        m_data( new ConstantData( name, value, editable ) ) {}
 
-	Constant( double value ) :
-		m_data( new ConstantData( value ) ) {}
+	Constant( double value, bool editable ) :
+		m_data( new ConstantData( value, editable ) ) {}
 
 	~Constant() {}
     
@@ -64,13 +87,23 @@ public:
 	{
 		return m_data->m_value;
 	}
-
+    
+    /* Change the value of the constant. 
+     
+     You need to tell solver to 'reevaluateConstant()' and 'updateVariables()' in order to see the effect.
+     
+     Throws
+     ------
+     ConstantEditError
+     The constant is not editable.
+     
+     */
 	void setValue( double value )
 	{
-        if(!m_data->editable)
+        if(!m_data->m_editable)
         {
-            std::cerr << "Error: Can not change value of a plain double container\n";
-            exit(-1);
+            std::string string = std::string("Can not change value of constant named \"") + m_data->m_name + std::string("\" because it is not editable");
+            throw ConstantEditError( string );
         }
         else
         {
@@ -80,7 +113,7 @@ public:
     
     const bool editable() const
     {
-        return m_data->editable;
+        return m_data->m_editable;
     }
     
     bool operator==( const Constant& other ) const
@@ -100,29 +133,29 @@ private:
 
 	public:
 
-		ConstantData( const std::string& name ) :
+		ConstantData( const std::string& name, double value, bool editable ) :
 			SharedData(),
 			m_name( name ),
-			m_value( 0.0 ),
-            editable( true ) {}
+			m_value( value ),
+            m_editable( editable ) {}
 
-		ConstantData( const char* name ) :
+		ConstantData( const char* name, double value, bool editable ) :
 			SharedData(),
 			m_name( name ),
-			m_value( 0.0 ),
-            editable( true ) {}
+			m_value( value ),
+            m_editable( editable ) {}
 
-		ConstantData( double value ) :
+		ConstantData( double value, bool editable ) :
 			SharedData(),
 			m_name( "" ),
 			m_value( value ),
-            editable( false ) {}
+            m_editable( editable ) {}
 
 		~ConstantData() {}
 
 		std::string m_name;
 		double m_value;
-        bool editable;
+        bool m_editable;
 
 	private:
 

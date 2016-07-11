@@ -9,7 +9,7 @@ TEST(Expression, Basics) {
     SimpleTerm tree(10, SimpleTerm::OP_MULTIPLY, 20);
     Term term(v, tree);
     
-    Expression expression(term, SimpleTerm( Constant ( 2.0 ) ) );
+    Expression expression(term, SimpleTerm( 2.0 ) );
     EXPECT_TRUE(expression.terms().size() == 1);
     EXPECT_EQ(expression.constant().leftLeaf().value(), 2.0);
 }

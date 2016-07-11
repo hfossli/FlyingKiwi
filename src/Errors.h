@@ -24,7 +24,6 @@
 #include <exception>
 #include <string>
 #include "Constraint.h"
-#include "Variable.h"
 
 namespace FlyingKiwi
 {
@@ -129,5 +128,4 @@ namespace FlyingKiwi
         
         std::string m_msg;
     };
-    
 }

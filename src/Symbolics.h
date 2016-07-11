@@ -62,7 +62,7 @@ namespace FlyingKiwi
 inline
 SimpleTerm operator-( const Constant& constant )
 {
-    return SimpleTerm( constant, SimpleTerm::OP_MULTIPLY, -1.0 );
+    return SimpleTerm( constant, SimpleTerm::OP_MULTIPLY, Constant( -1.0, false ) );
 }
     
  
@@ -133,7 +133,7 @@ SimpleTerm operator+( const SimpleTerm& left, const SimpleTerm& right )
 inline
 SimpleTerm operator-( const SimpleTerm& term )
 {
-    return SimpleTerm( term, SimpleTerm::OP_MULTIPLY, -1.0 );
+    return SimpleTerm( term, SimpleTerm::OP_MULTIPLY, Constant( -1.0, false) );
 }
     
     
@@ -144,41 +144,41 @@ Term operator-( const Variable& variable )
 {
     // TODO: Should be possible to write
     // return variable * -1.0;
-	return Term(variable, -1.0);
+	return Term( variable, Constant( -1.0, false ) );
 }
 
 
 // Term multiply, divide, and unary invert
 
 inline
-Term operator*( const Term& term, SimpleTerm& coefficient )
+Term operator*( const Term& term, const SimpleTerm& coefficient )
 {
 	return Term( term.variable(), term.coefficient() * coefficient );
 }
 
 inline
-Term operator*( SimpleTerm& coefficient, const Term& term )
+Term operator*( const SimpleTerm& coefficient, const Term& term )
 {
 	return Term( term.variable(), term.coefficient() * coefficient );
 }
 
 inline
-Term operator/( const Term& term, SimpleTerm& denominator )
+Term operator/( const Term& term, const SimpleTerm& denominator )
 {
     return Term( term.variable(), term.coefficient() / denominator );
 }
 
 inline
-Term operator/( SimpleTerm& constant, const Term& denominator )
+Term operator/( const SimpleTerm& constant, const Term& denominator )
 {
-    SimpleTerm newTerm( 1.0 / constant );
+    SimpleTerm newTerm( Constant( 1.0, false ) / constant );
     return Term( denominator.variable(), denominator.coefficient() * newTerm );
 }
 
 inline
 Term operator-( const Term& term )
 {
-	return Term( term.variable(), term.coefficient() * -1.0 );
+	return Term( term.variable(), term.coefficient() * Constant( -1.0, false ) );
 }
 
 
@@ -203,16 +203,16 @@ Expression operator*( const Expression& expression, const SimpleTerm& coefficien
 
 
 inline
-Expression operator/( const Expression& expression, double denominator )
+Expression operator/( const Expression& expression, const SimpleTerm& denominator )
 {
-	return expression * ( 1.0 / denominator );
+	return expression * ( Constant( 1.0, false ) / denominator );
 }
 
 
 inline
 Expression operator-( const Expression& expression )
 {
-	return expression * -1.0;
+	return expression * Constant( -1.0, false );
 }
 
 
@@ -248,7 +248,7 @@ Expression operator+( const Expression& expression, const Variable& variable )
 
 
 inline
-Expression operator+( const Expression& expression, double constant )
+Expression operator+( const Expression& expression, const SimpleTerm& constant )
 {
 	return Expression( expression.terms(), expression.constant() + constant );
 }
@@ -276,7 +276,7 @@ Expression operator-( const Expression& expression, const Variable& variable )
 
 
 inline
-Expression operator-( const Expression& expression, double constant )
+Expression operator-( const Expression& expression, const SimpleTerm& constant )
 {
 	return expression + -constant;
 }
@@ -310,7 +310,7 @@ Expression operator+( const Term& term, const Variable& variable )
 
 
 inline
-Expression operator+( const Term& term, double constant )
+Expression operator+( const Term& term, const SimpleTerm& constant )
 {
 	return Expression( term, constant );
 }
@@ -338,7 +338,7 @@ Expression operator-( const Term& term, const Variable& variable )
 
 
 inline
-Expression operator-( const Term& term, double constant )
+Expression operator-( const Term& term, const SimpleTerm& constant )
 {
 	return term + -constant;
 }
@@ -368,7 +368,7 @@ Expression operator+( const Variable& first, const Variable& second )
 
 
 inline
-Expression operator+( const Variable& variable, double constant )
+Expression operator+( const Variable& variable, const SimpleTerm& constant )
 {
 	return Term( variable ) + constant;
 }
@@ -396,7 +396,7 @@ Expression operator-( const Variable& first, const Variable& second )
 
 
 inline
-Expression operator-( const Variable& variable, double constant )
+Expression operator-( const Variable& variable, const SimpleTerm& constant )
 {
 	return variable + -constant;
 }
@@ -405,42 +405,42 @@ Expression operator-( const Variable& variable, double constant )
 // Double add and subtract
 
 inline
-Expression operator+( double constant, const Expression& expression )
+Expression operator+( const SimpleTerm& constant, const Expression& expression )
 {
 	return expression + constant;
 }
 
 
 inline
-Expression operator+( double constant, const Term& term )
+Expression operator+( const SimpleTerm& constant, const Term& term )
 {
 	return term + constant;
 }
 
 
 inline
-Expression operator+( double constant, const Variable& variable )
+Expression operator+( const SimpleTerm& constant, const Variable& variable )
 {
 	return variable + constant;
 }
 
 
 inline
-Expression operator-( double constant, const Expression& expression )
+Expression operator-( const SimpleTerm& constant, const Expression& expression )
 {
 	return -expression + constant;
 }
 
 
 inline
-Expression operator-( double constant, const Term& term )
+Expression operator-( const SimpleTerm& constant, const Term& term )
 {
 	return -term + constant;
 }
 
 
 inline
-Expression operator-( double constant, const Variable& variable )
+Expression operator-( const SimpleTerm& constant, const Variable& variable )
 {
 	return -variable + constant;
 }
@@ -470,9 +470,10 @@ Constraint operator==( const Expression& expression, const Variable& variable )
 
 
 inline
-Constraint operator==( const Expression& expression, double constant )
+Constraint operator==( const Expression& expression, const SimpleTerm& constant )
 {
-	return expression == Expression( constant );
+    std::vector<Term> terms;
+	return expression == Expression( terms, constant );
 }
 
 
@@ -498,9 +499,10 @@ Constraint operator<=( const Expression& expression, const Variable& variable )
 
 
 inline
-Constraint operator<=( const Expression& expression, double constant )
+Constraint operator<=( const Expression& expression, const SimpleTerm& constant )
 {
-	return expression <= Expression( constant );
+    std::vector<Term> terms;
+	return expression <= Expression( terms, constant );
 }
 
 
@@ -526,9 +528,10 @@ Constraint operator>=( const Expression& expression, const Variable& variable )
 
 
 inline
-Constraint operator>=( const Expression& expression, double constant )
+Constraint operator>=( const Expression& expression, const SimpleTerm& constant )
 {
-	return expression >= Expression( constant );
+    std::vector<Term> terms;
+	return expression >= Expression( terms, constant );
 }
 
 
@@ -556,7 +559,7 @@ Constraint operator==( const Term& term, const Variable& variable )
 
 
 inline
-Constraint operator==( const Term& term, double constant )
+Constraint operator==( const Term& term, const SimpleTerm& constant )
 {
 	return Expression( term ) == constant;
 }
@@ -584,7 +587,7 @@ Constraint operator<=( const Term& term, const Variable& variable )
 
 
 inline
-Constraint operator<=( const Term& term, double constant )
+Constraint operator<=( const Term& term, const SimpleTerm& constant )
 {
 	return Expression( term ) <= constant;
 }
@@ -612,7 +615,7 @@ Constraint operator>=( const Term& term, const Variable& variable )
 
 
 inline
-Constraint operator>=( const Term& term, double constant )
+Constraint operator>=( const Term& term, const SimpleTerm& constant )
 {
 	return Expression( term ) >= constant;
 }
@@ -641,7 +644,7 @@ Constraint operator==( const Variable& first, const Variable& second )
 
 
 inline
-Constraint operator==( const Variable& variable, double constant )
+Constraint operator==( const Variable& variable, const SimpleTerm& constant )
 {
 	return Term( variable ) == constant;
 }
@@ -669,7 +672,7 @@ Constraint operator<=( const Variable& first, const Variable& second )
 
 
 inline
-Constraint operator<=( const Variable& variable, double constant )
+Constraint operator<=( const Variable& variable, const SimpleTerm& constant )
 {
 	return Term( variable ) <= constant;
 }
@@ -697,7 +700,7 @@ Constraint operator>=( const Variable& first, const Variable& second )
 
 
 inline
-Constraint operator>=( const Variable& variable, double constant )
+Constraint operator>=( const Variable& variable, const SimpleTerm& constant )
 {
 	return Term( variable ) >= constant;
 }
@@ -706,63 +709,63 @@ Constraint operator>=( const Variable& variable, double constant )
 // Double relations
 
 inline
-Constraint operator==( double constant, const Expression& expression )
+Constraint operator==( const SimpleTerm& constant, const Expression& expression )
 {
 	return expression == constant;
 }
 
 
 inline
-Constraint operator==( double constant, const Term& term )
+Constraint operator==( const SimpleTerm& constant, const Term& term )
 {
 	return term == constant;
 }
 
 
 inline
-Constraint operator==( double constant, const Variable& variable )
+Constraint operator==( const SimpleTerm& constant, const Variable& variable )
 {
 	return variable == constant;
 }
 
 
 inline
-Constraint operator<=( double constant, const Expression& expression )
+Constraint operator<=( const SimpleTerm& constant, const Expression& expression )
 {
 	return expression >= constant;
 }
 
 
 inline
-Constraint operator<=( double constant, const Term& term )
+Constraint operator<=( const SimpleTerm& constant, const Term& term )
 {
 	return term >= constant;
 }
 
 
 inline
-Constraint operator<=( double constant, const Variable& variable )
+Constraint operator<=( const SimpleTerm& constant, const Variable& variable )
 {
 	return variable >= constant;
 }
 
 
 inline
-Constraint operator>=( double constant, const Expression& expression )
+Constraint operator>=( const SimpleTerm& constant, const Expression& expression )
 {
 	return expression <= constant;
 }
 
 
 inline
-Constraint operator>=( double constant, const Term& term )
+Constraint operator>=( const SimpleTerm& constant, const Term& term )
 {
 	return term <= constant;
 }
 
 
 inline
-Constraint operator>=( double constant, const Variable& variable )
+Constraint operator>=( const SimpleTerm& constant, const Variable& variable )
 {
 	return variable <= constant;
 }
