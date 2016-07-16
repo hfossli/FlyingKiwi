@@ -151,7 +151,13 @@ private:
         SimpleTermData( const SimpleTerm& tree ) :
             m_tree( new SimpleTerm( tree ) ), m_leaf( 0.0, false ) {}
 
-		~SimpleTermData() {}
+		~SimpleTermData()
+        {
+            if( m_tree != NULL )
+            {
+                delete m_tree;
+            }
+        }
         
         const bool isLeaf() const
         {
